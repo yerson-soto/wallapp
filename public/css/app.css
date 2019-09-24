@@ -1,0 +1,44 @@
+:root {
+    --raleway: 'Raleway', sans-serif;
+    --poppins: 'Poppins', sans-serif;
+    --dancing: 'Dancing Script', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--poppins);
+    /* font-weight: lighter; */
+}
+
+#app {
+    position: relative;
+}
+
+.position-center {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 25%);
+}
+
+.mid {
+    transform: translate(50%, 50%);
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.logo {
+    font-family: var(--dancing);
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+}

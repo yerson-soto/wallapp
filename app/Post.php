@@ -10,17 +10,17 @@ class Post extends Model
 
     //one to many
     public function comments() {
-        return $this->hasMany(App\Comment);
+        return $this->hasMany(Comment::class);
     }
 
     //one to many
     public function likes() {
-        return $this->hasMany(App\Like);
+        return $this->hasMany(Like::class);
     }
 
     //one to many (inverse)
     public function user() {
-        return $this->belongsTo(App\User);
+        return $this->belongsTo(User::class);
     }
 
 }
