@@ -19,4 +19,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'PostController@index')->name('posts');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//user routes
+Route::get('/user/profile', 'UserController@show')->name('profile');
+Route::get('/user/profile/edit', 'UserController@edit')->name('profile.edit');
+Route::put('/user/profile/edit', 'UserController@update')->name('profile.update');
+Route::post('/user/profile/edit', 'UserController@updateImage')->name('image.update');
+Route::get('/user/avatar/{filename}', 'UserController@showImage')->name('image.show');

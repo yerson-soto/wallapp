@@ -6,6 +6,7 @@
 
 html {
     box-sizing: border-box;
+    min-height: 100%;
 }
 
 *, *::before, *::after {
@@ -14,13 +15,34 @@ html {
 
 body {
     font-family: var(--poppins);
+    position: relative;
+    height: 100%;
     /* font-weight: lighter; */
+}
+
+
+img {
+    max-width: 100%;
+}
+
+fieldset {
+    padding:1rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+legend {
+    font-family: var(--raleway);
+    width: unset;
+    padding: 0 .5rem;
+    letter-spacing: 1px;
+    /* margin-left: 1.5rem; */
 }
 
 #app {
     position: relative;
 }
 
+/*Globals*/
 .position-center {
     position: absolute;
     top: 50%;
@@ -36,9 +58,74 @@ body {
     cursor: pointer;
 }
 
+.form-input {
+    background: #f1f1f1;
+    width: 100%;
+    display: block;
+    border: none;
+    padding: .4rem .8rem;
+    color: black;
+    opacity: .9;
+    border-radius: 10px;
+    outline: none;
+}
+
 .logo {
     font-family: var(--dancing);
     font-size: 2em;
     margin: 0;
     padding: 0;
+    opacity: .6;
 }
+
+/*Navbar*/
+.nav-fixed {
+    height: 4rem;
+    z-index: 1;
+}
+
+.alert {
+    bottom: 2%;
+    right: 2%;
+    z-index: 1;
+}
+
+.alert-success {
+    border-left: 8px solid green;
+}
+
+.alert-danger {
+    border-left: 8px solid red;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+/*sidebar*/
+aside {
+    /* background: rgb(241, 241, 241); */
+    background: #448b97;
+}
+
+.avatar {
+    width: 10rem;
+    height: 10rem;
+}
+
+
+
+@media (min-width: 768px) {
+    aside {
+        position: fixed!important;
+        height: 100%;
+    }
+
+}
+
+
+
+
+
+
