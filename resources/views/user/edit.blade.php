@@ -1,27 +1,32 @@
 @extends('layouts.app')
 
 @section('sidebar')
-    <aside class="col-md-4 d-flex justify-content-center py-5">
+    <aside class="col-md-4 py-5 bground-primary">
+        <div class="row justify-content-center mb-5">
+            @component('includes.message')
+                {{ __('Con una foto de perfil estas mejor identificado y tus amigos te pueden encontrarte facilmente') }}
+            @endcomponent
+        </div>
         <div class="profile-img">
-            <form action="{{ route('image.update') }}" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('image.update') }}" enctype="multipart/form-data" method="POST" id="avatarForm">
                 @csrf
                 <label for="image" class="cursor-pointer row justify-content-center">
                     <div class="col-12 d-flex justify-content-center">
                        <img
                             src="{{ route('image.show', Auth::user()->image) }}"
-                            alt="{{ Auth::user()->name . ' ' . Auth::user()->surname }}"
+                            alt="Avatar"
                             class="rounded-circle avatar"
                         >
                     </div>
 
-                    <div class="col-10 btn btn-secondary d-block rounded-0 py-1 mt-4">
-                        {{ __('Subir Foto') }}
+                    <div class="col-5 d-block button-primary mt-4 select-avatar">
+                        {{ __('Añade una Foto') }}
                     </div>
                 </label>
                 <input type="file" name="image" id="image" class="d-none">
-                <input type="submit" value="Guardar" class="btn btn-success">
             </form>
         </div>
+
     </aside>
 @endsection
 

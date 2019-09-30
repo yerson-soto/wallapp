@@ -10,7 +10,11 @@ class Post extends Model
 
     //one to many
     public function comments() {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy('id', 'desc')->limit(2);
+    }
+
+    public function allComments() {
+        return $this->hasMany(Comment::class)->orderBy('id', 'desc');
     }
 
     //one to many

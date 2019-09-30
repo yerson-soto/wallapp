@@ -7,6 +7,7 @@
 html {
     box-sizing: border-box;
     min-height: 100%;
+    scroll-behavior: smooth;
 }
 
 *, *::before, *::after {
@@ -17,9 +18,14 @@ body {
     font-family: var(--poppins);
     position: relative;
     height: 100%;
+    font-size: .9em;
+    /* background: #f9f9f9; */
     /* font-weight: lighter; */
 }
 
+a, input {
+    font-size: .9em!important;
+}
 
 img {
     max-width: 100%;
@@ -38,11 +44,24 @@ legend {
     /* margin-left: 1.5rem; */
 }
 
+textarea {
+    resize: none;
+    outline: none;
+}
+
+button {
+    outline: none;
+}
+
 #app {
     position: relative;
 }
 
 /*Globals*/
+.raleway {
+    font-family: var(--raleway);
+}
+
 .position-center {
     position: absolute;
     top: 50%;
@@ -72,16 +91,10 @@ legend {
 
 .logo {
     font-family: var(--dancing);
-    font-size: 2em;
+    font-size: 1.8em!important;
     margin: 0;
     padding: 0;
     opacity: .6;
-}
-
-/*Navbar*/
-.nav-fixed {
-    height: 4rem;
-    z-index: 1;
 }
 
 .alert {
@@ -98,22 +111,111 @@ legend {
     border-left: 8px solid red;
 }
 
+.alert-gray {
+    border-left: 8px solid rgba(0, 0, 0, .5);
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
 
-
-/*sidebar*/
-aside {
-    /* background: rgb(241, 241, 241); */
-    background: #448b97;
+.button-primary {
+    display: inline-block;
+    background: transparent;
+    letter-spacing: .5px;
+    padding: .3rem;
+    text-align: center;
+    color: black;
+    border: 1px solid black;
+    opacity: .6;
+    transition: .1s;
 }
 
+.button-primary:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.border-top {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.border-bottom {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.border-left {
+    border-left: 2px solid gray!important;
+}
+
+.card-title {
+    font-family: var(--raleway);
+}
+
+.opacity-1 {
+    opacity: 1;
+}
+
+/*Navbar*/
+.nav-fixed {
+    height: 3rem;
+    z-index: 1;
+}
+
+.avatar-min {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.avatar-sm {
+    width: 2rem;
+    height: 2rem;
+}
+
+.font-sm {
+    font-size: .8em!important;
+}
+
+.font-md {
+    font-size: .9em!important;
+}
+
+.height-sm {
+    height: 2rem;
+}
+
+.height-md {
+    height: 5rem;
+}
+
+.bground-primary {
+    background: #d4dde7;
+}
+
+.link {
+    text-decoration: none!important;
+    color: black;
+}
+
+.link:hover {
+    color: unset;
+}
+
+.max-height-60 {
+    max-height: 20rem;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+/*sidebar*/
 .avatar {
     width: 10rem;
     height: 10rem;
 }
-
 
 
 @media (min-width: 768px) {

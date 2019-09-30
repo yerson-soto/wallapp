@@ -82,7 +82,7 @@ class UserController extends Controller
             $user->image = $imagePathName;
             $result = $user->update();
             if ($result) {
-                if ($current_image != 'default.jpg' && Storage::disk('users')->exists($current_image)) {
+                if ($current_image != 'default.png' && Storage::disk('users')->exists($current_image)) {
                     Storage::delete('users/'.$current_image);
                 }
             }
