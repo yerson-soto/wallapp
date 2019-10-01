@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Rules\MatchOldPassword;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,8 +19,28 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function show() {
-        return view('user.show');
+    public function index(Request $request) {
+        if (count($request->all()) == 0) {
+            $users = User::orderBy('id', 'desc')->get();
+            return view('user.index', compact('users'));
+        } else {
+            $search = $request->search;
+            $users = User::where('username', 'LIKE', '%'.$search.'%')
+                        ->orWhere('name', 'LIKE', '%'.$search.'%')
+                        ->orWhere('surname', 'LIKE', '%'.$search.'%')
+                        ->orderBy('id', 'desc')
+                        ->get();
+
+            return view('user.index', compact('users', 'search'));
+        }
+
+
+
+    }
+
+    public function show($username) {
+        $user = User::where('username', $username)->first();
+        return view('user.show', compact('user'));
     }
 
     public function edit() {

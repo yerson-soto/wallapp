@@ -24,7 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //user routes
-Route::get('/user/profile', 'UserController@show')->name('profile');
+Route::get('/user/find', 'UserController@index')->name('users');
+Route::post('/user/find', 'UserController@index')->name('user.find');
+Route::get('/user/{username}', 'UserController@show')->name('profile');
 Route::get('/user/profile/edit', 'UserController@edit')->name('profile.edit');
 Route::put('/user/profile/edit', 'UserController@update')->name('profile.update');
 Route::post('/user/profile/edit', 'UserController@updateImage')->name('image.update');

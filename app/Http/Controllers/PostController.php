@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use App\Post;
+use App\User;
+use App\Comment;
+use App\Like;
 
 class PostController extends Controller
 {
@@ -20,7 +24,8 @@ class PostController extends Controller
 
     public function index() {
         $posts = Post::orderBy('id', 'desc')->get();
-        return view('post.index', compact('posts'));
+        $users = User::inRandomOrder()->limit(5)->get();
+        return view('post.index', compact('posts', 'users'));
     }
 
     public function show($post) {
@@ -67,8 +72,32 @@ class PostController extends Controller
     }
 
     public function delete(Request $request, $post) {
-        $post = Post::findOrFail($post);
-        $post->delete();
+        $user = Auth::user();
+        $postToDelete = Post::findOrFail($post);
+        $comments = Comment::where('post_id', $postToDelete->id)->get();
+
+        $likes = Like::where('post_id', $postToDelete->id)->get();
+
+        //delete post comments
+        if ($comments && count($comments) >= 1) {
+            foreach ($comments as $comment) {
+                $comment->delete();
+            }
+        }
+
+        //delete post likes
+        if ($likes && count($likes) >= 1) {
+            foreach ($likes as $like) {
+                $like->delete();
+            }
+        }
+
+        //delete post files
+        Storage::disk('posts')->delete($postToDelete->image);
+
+        //delete post
+        $postToDelete->delete();
+
         return back();
     }
 }

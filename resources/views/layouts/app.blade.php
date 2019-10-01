@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -63,13 +62,17 @@
                                 <li class="nav-itemm mr-4">
                                     <a href="{{ route('posts') }}" class="nav-link">{{ __('Inicio') }}</a>
                                 </li>
+                                <li class="nav-itemm mr-4">
+                                    <a href="{{ route('users') }}" class="nav-link">{{ __('Buscar personas') }}</a>
+                                </li>
+
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->username }} <span class="caret"></span>
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('profile') }}">
+                                        <a class="dropdown-item" href="{{ route('profile', Auth::user()->username) }}">
                                             {{ __('Perfil') }}
                                         </a>
 
@@ -90,7 +93,7 @@
                                 </li>
 
                                 <li class="nav-item ml-1">
-                                    <a href="{{ route('profile') }}">
+                                    <a href="{{ route('profile', Auth::user()->username) }}">
                                         @include('includes.avatar')
                                     </a>
                                 </li>

@@ -94,17 +94,26 @@
                 <aside>
                     <h4 class="font-weight-lighter border-bottom pb-2 mb-3 h5">{{ __('Personas') }}</h4>
                     <ul class="p-0">
-                        <li class="d-flex justify-content-between align-items-center mb-2">
-                            <div class="friend">
-                                <img src="{{ route('image.show', Auth::user()->image) }}" alt="" class="rounded-circle avatar-sm">
-                                <p class="m-0 d-inline px-2 mr-4">George Baez</p>
-                            </div>
-                            <span class="button-primary font-sm px-2 rounded-0">Seguir</span>
-                        </li>
+                        @foreach ($users as $user)
+                            <li class="d-flex justify-content-between align-items-center mb-3">
+                                <a class="link" href="{{ route('profile', $user->username) }}">
+                                    <img src="{{ route('image.show', $user->image) }}" alt="" class="rounded-circle avatar-sm">
+                                    <p class="m-0 d-inline px-2 mr-4">{{ $user->username }}</p>
+                                </a>
+                                <span class="button-primary font-sm px-2 rounded-0">
+                                    {{ __('Seguir') }}
+                                </span>
+                            </li>
+                        @endforeach
                     </ul>
+                        <a href="{{ route('users') }}" class="button-primary link d-block py-2 mt-4">
+                            {{ __('Ver todos') }}
+                        </a>
                 </aside>
             </div>
         </div><!--row-->
     </main>
 @endsection
+
+
 
